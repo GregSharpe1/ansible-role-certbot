@@ -1,2 +1,18 @@
 ---
-# tasks file for certbot
+
+- name: Install required packages
+  package:
+    name: "{{ item }}"
+    state: present
+    update_cache: "yes"
+  with_items: "{{ certbot_required_packages }}"
+
+- name: Install certbot ppa
+  apt_repository:
+    repo: 'ppa:certbot/certbot'
+    update_cache: "yes"
+
+- name: Install certbot
+  package:
+    name: certbot
+    state: present
