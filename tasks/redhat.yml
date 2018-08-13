@@ -1,0 +1,8 @@
+---
+
+# As we've installed epel all we need is python2-certbot-nginx
+
+- name: Install certbot
+  package:
+    name: python2-certbot-nginx
+    state: present

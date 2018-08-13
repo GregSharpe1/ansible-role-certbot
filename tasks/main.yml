@@ -7,12 +7,9 @@
     update_cache: "yes"
   with_items: "{{ certbot_required_packages }}"
 
-- name: Install certbot ppa
-  apt_repository:
-    repo: 'ppa:certbot/certbot'
-    update_cache: "yes"
-
-- name: Install certbot
-  package:
-    name: certbot
-    state: present
+- include: debian.yml
+  when:
+    ansible_os_family == "Debian"
+- include: redhat.yml
+  when:
+    ansible_os_family == "RedHat"
