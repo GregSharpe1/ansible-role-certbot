@@ -1,5 +1,12 @@
 ---
 
+- name: Install required packages
+  package:
+    name: "{{ item }}"
+    state: present
+    update_cache: "yes"
+  with_items: "{{ certbot_required_packages }}"
+
 - name: Install certbot ppa
   apt_repository:
     repo: 'ppa:certbot/certbot'

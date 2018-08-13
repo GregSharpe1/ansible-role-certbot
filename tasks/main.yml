@@ -1,12 +1,5 @@
 ---
 
-- name: Install required packages
-  package:
-    name: "{{ item }}"
-    state: present
-    update_cache: "yes"
-  with_items: "{{ certbot_required_packages }}"
-
 - include: debian.yml
   when:
     ansible_os_family == "Debian"
