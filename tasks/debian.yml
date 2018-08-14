@@ -16,3 +16,9 @@
   package:
     name: certbot
     state: present
+
+# Because I'm using nginx I'll installed nginx plugin.
+- name: Install nginx plugin for certbot
+  package:
+    name: python-certbot-nginx 
+    state: present
